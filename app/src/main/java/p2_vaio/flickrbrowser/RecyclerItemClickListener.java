@@ -23,15 +23,44 @@ public class RecyclerItemClickListener extends RecyclerView.SimpleOnItemTouchLis
     private final onRecyclerClickListener listener ;
     private final GestureDetectorCompat gestureDetectorCompat;
 
-    public RecyclerItemClickListener(Context context,final RecyclerView recyclerView,onRecyclerClickListener listener) {
+    public RecyclerItemClickListener(Context context, final RecyclerView recyclerView, final onRecyclerClickListener listener) {
         this.listener = listener;
-        gestureDetectorCompat=null;
+        gestureDetectorCompat = new GestureDetectorCompat(context,new GestureDetector.SimpleOnGestureListener(){
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                Log.d(TAG, "onSingleTapUp: in");
+                View childView = recyclerView.findChildViewUnder(e.getX(),e.getY());
+                if(childView!=null&&listener!=null){
+                    Log.d(TAG, "onSingleTapUp: calling listener.onItemClick");
+                    listener.onItemClick(childView,recyclerView.getChildAdapterPosition(childView));
+                }
+                return super.onSingleTapUp(e);
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+                Log.d(TAG, "onLongPress: in");
+                super.onLongPress(e);
+                View childView = recyclerView.findChildViewUnder(e.getX(),e.getY());
+                if(childView!=null&&listener!=null){
+                    Log.d(TAG, "onLongPress: calling listener.onItemLongClick");
+                    listener.onItemClick(childView,recyclerView.getChildAdapterPosition(childView));
+                }
+
+            }
+        });
     }
 
     @Override
     public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
         Log.d(TAG, "onInterceptTouchEvent: starts");
-
-        return super.onInterceptTouchEvent(rv, e);
+        if(gestureDetectorCompat != null){
+            boolean result = gestureDetectorCompat.onTouchEvent(e);
+            Log.d(TAG, "onInterceptTouchEvent: returned "+result);
+            return result;
+        }else{
+            Log.d(TAG, "onInterceptTouchEvent: returned false");
+            return false;
+        }
     }
 }

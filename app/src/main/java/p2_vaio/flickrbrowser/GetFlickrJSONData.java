@@ -29,6 +29,10 @@ public class GetFlickrJSONData extends AsyncTask <String,Void ,String> implement
         void onDataAvailable(ArrayList<Photo> photo , DownloadStatus status);
     }
 
+    public ArrayList<Photo> getList() {
+        return list;
+    }
+
     @Override
     protected String doInBackground(String... strings) {
         Log.d(TAG, "doInBackground: starts");

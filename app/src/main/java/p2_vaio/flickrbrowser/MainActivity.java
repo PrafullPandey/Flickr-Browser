@@ -1,5 +1,6 @@
 package p2_vaio.flickrbrowser;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 /*import android.support.design.widget.FloatingActionButton;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements GetFlickrJSONData
         RecyclerItemClickListener.onRecyclerClickListener {
 
     private static final String TAG = "MainActivity";
+    private static final String ImageURL="IMAGEURL";
     private FlickrRecyclerViewAdapter flickrRecyclerViewAdapter;
 
     @Override
@@ -117,12 +119,12 @@ public class MainActivity extends AppCompatActivity implements GetFlickrJSONData
     public void onItemClick(View view, int position) {
         Log.d(TAG, "onItemClick: in");
         Toast.makeText(MainActivity.this,"Item is clicked",Toast.LENGTH_LONG).show();
+
     }
 
     @Override
     public void onItemLongClick(View view, int position) {
         Log.d(TAG, "onItemLongClick: in");
-
         Toast.makeText(MainActivity.this,"Item is long clicked",Toast.LENGTH_LONG).show();
     }
 }
