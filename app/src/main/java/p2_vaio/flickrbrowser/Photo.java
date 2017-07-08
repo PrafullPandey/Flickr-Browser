@@ -1,12 +1,15 @@
 package p2_vaio.flickrbrowser;
 
+import java.io.Serializable;
 import java.net.URL;
 
 /**
  * Created by p2_vaio on 7/6/2017.
  */
 
-public class Photo {
+public class Photo implements Serializable {
+
+    private static final long serialVersionUID =1L;
 
     private String title;
     private String author;
