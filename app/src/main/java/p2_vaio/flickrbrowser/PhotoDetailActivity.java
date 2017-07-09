@@ -1,6 +1,7 @@
 package p2_vaio.flickrbrowser;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -41,9 +42,15 @@ public class PhotoDetailActivity extends BaseActivity {
             TextView author = (TextView)findViewById(R.id.photo_author);
             TextView tags = (TextView)findViewById(R.id.phtot_tags);
 
-            title.setText(photo.getTitle());
+            Resources resources = getResources();
+            String text = resources.getString(R.string.photo_title_text , photo.getTitle());
+            title.setText(text);
+            text=resources.getString(R.string.photo_title_tags , photo.getTags());
+            tags.setText(text);
+
+//            title.setText(photo.getTitle());
             author.setText(photo.getAuthor());
-            tags.setText(photo.getTags());
+//            tags.setText(photo.getTags());
             Picasso.with(this).load(photo.getLink())
                     .error(R.drawable.placeholder)
                     .placeholder(R.drawable.placeholder)

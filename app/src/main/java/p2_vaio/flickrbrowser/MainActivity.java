@@ -94,6 +94,9 @@ public class MainActivity extends BaseActivity implements GetFlickrJSONData.OnDa
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id==R.id.search){
+            startActivity(new Intent(MainActivity.this , SearchActivity.class));
+        }
         Log.d(TAG, "onOptionsItemSelected() returned: " + true);
         return super.onOptionsItemSelected(item);
     }
