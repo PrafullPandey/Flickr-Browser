@@ -44,7 +44,7 @@ public class PhotoDetailActivity extends BaseActivity {
             title.setText(photo.getTitle());
             author.setText(photo.getAuthor());
             tags.setText(photo.getTags());
-            Picasso.with(this).load(photo.getImage())
+            Picasso.with(this).load(photo.getLink())
                     .error(R.drawable.placeholder)
                     .placeholder(R.drawable.placeholder)
                     .into(imageView);
