@@ -83,7 +83,7 @@ public class GetFlickrJSONData extends AsyncTask <String,Void ,String> implement
                                 ,jsonPhoto.getJSONObject("media").getString("m")
                         );
                         list.add(photo);
-                        Log.d(TAG, "onDownloadComplete: "+photo.toString());
+//                        Log.d(TAG, "onDownloadComplete: "+photo.toString());
 
                     }
                 }catch(Exception e){

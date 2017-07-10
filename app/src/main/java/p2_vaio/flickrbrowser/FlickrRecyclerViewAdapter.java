@@ -41,13 +41,16 @@ class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecyclerViewA
     public void onBindViewHolder(FlickrImageViewHolder holder, int position) {
         //called by LayoutManager when it wants new data in an exixting row
 //        Photo currentphoto = list.get(position);
-
-        holder.title.setText(list.get(position).getTitle());
-        Picasso.with(context).load(list.get(position).getImage())
-                .error(R.drawable.placeholder)
-                .placeholder(R.drawable.placeholder)
-                .into(holder.thumbnail);
-
+        if(list ==null || list.size()==0){
+            holder.thumbnail.setImageResource(R.drawable.placeholder);
+            holder.title.setText(R.string.empty_photo);
+        }else {
+            holder.title.setText(list.get(position).getTitle());
+            Picasso.with(context).load(list.get(position).getImage())
+                    .error(R.drawable.placeholder)
+                    .placeholder(R.drawable.placeholder)
+                    .into(holder.thumbnail);
+        }
     }
 
     @Override

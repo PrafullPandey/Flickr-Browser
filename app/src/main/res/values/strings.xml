@@ -4,8 +4,9 @@
     <string name="title_activity_search">Search Activity</string>
     <string name="title_activity_photo_detail">Photo Detail</string>
     <string name="photo_title_text">Title: %s</string>
-    <!--<string name="photo_title_tags">Tags: %s</string>-->
-    <string name="photo_title_tags">%1$s %2$s %3$s</string>
+    <string name="photo_title_tags">Tags: %s</string>
+    <!--<string name="photo_title_tags">%1$s %2$s %3$s</string>-->
     <string name="activity_search">Search</string>
+    <string name="empty_photo">No results matched your query search.  Search Again</string>
 
 </resources>
